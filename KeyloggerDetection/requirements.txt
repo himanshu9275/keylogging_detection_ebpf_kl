@@ -1,0 +1,32 @@
+# ==================================================
+# Requirements for eBPF Keylogger Detection
+# ==================================================
+
+# ⚠️ IMPORTANT: Do NOT use pip to install bcc (e.g., pip install bcc).
+# The PyPI 'bcc' package is incorrect. eBPF Python bindings must be 
+# installed via your system's package manager.
+
+# --------------------------------------------------
+# 1. System Dependencies (Ubuntu / Debian / WSL2)
+# --------------------------------------------------
+# Run the following command to install the required tools:
+# 
+# sudo apt update
+# sudo apt install bpfcc-tools python3-bpfcc xz-utils linux-headers-$(uname -r)
+#
+# Note for WSL2 Users: 
+# If 'linux-headers-...' fails to install, it is okay! The 'xz-utils' package 
+# allows BCC to dynamically extract embedded headers from the WSL2 kernel.
+# Just run: sudo apt install bpfcc-tools python3-bpfcc xz-utils
+
+# --------------------------------------------------
+# 2. Virtual Environment Notice
+# --------------------------------------------------
+# If you are using a Python virtual environment (venv), standard venvs 
+# CANNOT see the system-installed bcc library. 
+#
+# It is highly recommended to run the script using the system Python directly:
+# sudo /usr/bin/python3 detector.py
+#
+# If you MUST use a venv, you have to create it with system packages enabled:
+# python3 -m venv venv --system-site-packages
